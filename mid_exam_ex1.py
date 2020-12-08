@@ -11,28 +11,37 @@ def inputuri():
     end = int(input("Te rog introdu sfarsitul"))
     word = input("alege un cuvant care sa aiba dimensiunile egale cu diferenta dintr start end")
     while start > len(list(string)):
-        start = int(input("Te rog introdu startul"))
+            start = int(input("Te rog introdu startul"))
 
     while end > len(list(string)):
-        end = int(input("Te rog introdu sfarsitul"))
+            end = int(input("Te rog introdu sfarsitul"))
 
-    while len(word) >= end - start:
-        word = input("alege un cuvant care sa aiba dimensiunile egale cu diferenta dintr start end")
+    while len(word) > end - start:
+            word = input("alege un cuvant care sa aiba dimensiunile egale cu diferenta dintr start end")
 
     return string, start, end, word
 
 
 
-
 def functie_inlocuire():
-    string, start, end, word = inputuri()
+    vrei_sa_in = 'D'
 
-    list_word = list(word)
-    lista_string = list(string)
-    index_lista_word = 0
-    for index, value in enumerate(lista_string):
-        if start-1 <= index <= end-1:
-            lista_string[index] = list_word[index_lista_word]
-            index_lista_word += 1
-    print(''.join(lista_string))
+    while vrei_sa_in == 'D':
+        try:
+            string, start, end, word = inputuri()
+            list_word = list(word)
+            lista_string = list(string)
+            index_lista_word = 0
+            for index, value in enumerate(lista_string):
+                if start-1 < index < end:
+                    lista_string[index-1] = list_word[index_lista_word]
+                    if index_lista_word < 9:
+                        index_lista_word += 1
+                    else:
+                        break
+            string =''.join(lista_string)
+            print(string)
+            vrei_sa_in = input("Mai vrei sa inlocuiesti  alte variabile? Apasa D pt aface asta").upper()
+        except Exception:
+            print("pare rau :(")
 functie_inlocuire()
