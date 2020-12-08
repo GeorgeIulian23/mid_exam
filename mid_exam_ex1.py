@@ -3,7 +3,7 @@ string = "The Inquisitor must meet Varric on top of Skyhold's battlements to be 
 
 # [start, end, text]
 
-patches = [[5, 14, "Conquist"], [26, 30, "King"], [43, 49, "Palace"]]
+patches = [[5, 14, "Conquista"], [26, 30, "King"], [43, 49, "Palace"]]
 
 def inputuri():
     string = input("Da ne stringul")
@@ -42,7 +42,10 @@ def functie_inlocuire():
                     word = input("alege un cuvant care sa aiba dimensiunile egale cu diferenta dintr start end")
 
             list_word = list(word)
-            lista_string = list(string)
+            if aux == 0:
+                lista_string = list(string)
+            else:
+                lista_string = list(stringul_facut)
             index_lista_word = 0
             for index, value in enumerate(lista_string):
                 if start-1 < index < end:
