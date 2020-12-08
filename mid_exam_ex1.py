@@ -3,7 +3,7 @@ string = "The Inquisitor must meet Varric on top of Skyhold's battlements to be 
 
 # [start, end, text]
 
-patches = [[5, 14, "Conquist"], [26, 31, "King"], [43, 49, "Palace"]]
+patches = [[5, 14, "Conquist"], [26, 30, "King"], [43, 49, "Palace"]]
 
 def inputuri():
     string = input("Da ne stringul")
@@ -26,11 +26,21 @@ def functie_inlocuire():
     aux = 0
     while vrei_sa_in == 'D':
         try:
-            if aux > 0:
+            if aux == 0:
                 string, start, end, word = inputuri()
-                string = stringul_facut
             else:
-                string, start, end, word = inputuri()
+                start = int(input("Te rog introdu startul"))
+                end = int(input("Te rog introdu sfarsitul"))
+                word = input("alege un cuvant care sa aiba dimensiunile egale cu diferenta dintr start end")
+                while start > len(list(stringul_facut)):
+                    start = int(input("Te rog introdu startul"))
+
+                while end > len(list(stringul_facut)):
+                    end = int(input("Te rog introdu sfarsitul"))
+
+                while len(word) > end - start:
+                    word = input("alege un cuvant care sa aiba dimensiunile egale cu diferenta dintr start end")
+
             list_word = list(word)
             lista_string = list(string)
             index_lista_word = 0
@@ -45,7 +55,7 @@ def functie_inlocuire():
             print(stringul_facut)
             aux += 1
             vrei_sa_in = input("Mai vrei sa inlocuiesti  alte variabile? Apasa D pt aface asta").upper()
-        except Exception:
-            print("pare rau :(")
+        except Exception as e:
+            print("pare rau {}".format(e))
 
 functie_inlocuire()
